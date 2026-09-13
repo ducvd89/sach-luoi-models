@@ -14,7 +14,7 @@ lại đúng file gốc. Gói giọng Piper thì để nguyên `.tar.bz2` như b
 ## Tệp
 
 Bảng dưới là của bản phát hành [`v1`](../../releases/tag/v1). SHA256 tính trên chính file
-`.zip`/`.tar.bz2` tải về.
+`.zip`/`.tar.bz2` hoặc từng file mô hình tải về.
 
 ### Engine VieNeu-TTS v3 Turbo
 
@@ -55,6 +55,23 @@ Nguồn: [pnnbao-ump/VieNeu-TTS-v2](https://huggingface.co/pnnbao-ump/VieNeu-TTS
 
 Nguồn: bản phát hành của [k2-fsa/sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx/releases).
 
+### Kiểm âm wav2vec2 tiếng Việt
+
+Hai file giữ nguyên nội dung từ revision `ded9b63317d3efdb0d0422fd05592efb43cdee10`
+của [galamkhoahoc/wav2vec2-vi-phone-ONNX](https://huggingface.co/galamkhoahoc/wav2vec2-vi-phone-ONNX).
+Theo manifest ONNX, mô hình gốc là
+[tuanio/wav2vec2-base-finetune-vi_phone-non_freeze-spec_aug-500epoch](https://huggingface.co/tuanio/wav2vec2-base-finetune-vi_phone-non_freeze-spec_aug-500epoch).
+Ứng dụng dùng bản int8 để nhận dạng âm vị và đếm âm tiết, chạy offline.
+
+| File trên release v1 | Byte | SHA256 |
+|---|---|---|
+| `wav2vec2-vi-phone-model_quantized.onnx` | 122.435.778 | `c4c7503ce9c0ab43cdb31fb8b5a6cb1fc1d0693281ac9bc473cdf6cee09e8a29` |
+| `wav2vec2-vi-phone-phonemes.json` | 1.636 | `71616f1fad5bb7224c45852eaa629837635523f8c02d9dedcf89ea3c2b737181` |
+
+Tên gốc lần lượt là `onnx/model_quantized.onnx` và `phonemes.json`. Tiền tố trên release
+chỉ tránh trùng tên với mô hình khác; app lưu lại thành `model_quantized.onnx` và
+`phonemes.json`, kiểm dung lượng và SHA256 trước khi dùng.
+
 ## Một lưu ý cho ai dựng lại các gói này
 
 Đường dẫn bên trong file zip **phải dùng dấu `/`**, không dùng dấu gạch ngược. Đặc tả zip
@@ -77,3 +94,7 @@ và phải ghi công tác giả.
 
 **Piper / VITS** — mô hình do k2-fsa đóng gói, giấy phép theo từng giọng ghi trong chính
 gói tải về.
+
+**wav2vec2 âm vị tiếng Việt** — nguồn ONNX: galamkhoahoc; mô hình huấn luyện: tuanio.
+Hai kho nguồn chưa công bố giấy phép tại thời điểm tích hợp. Không gán cho các trọng số
+này giấy phép của ứng dụng hay giấy phép của các mô hình khác trong kho.
