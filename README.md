@@ -18,6 +18,26 @@ Bảng dưới là của bản phát hành [`v1`](../../releases/tag/v1). SHA256
 
 ### Engine VieNeu-TTS v3 Turbo
 
+Bản cập nhật mới nhất đã sao lưu ngày 18/9/2026: revision
+`5f2a3e93092efaba9153253ff5f2e6a8e810e4f2` (nguồn cập nhật 16/9/2026).
+
+| Gói mới | Byte | SHA256 |
+|---|---|---|
+| `vieneu-v3-5f2a3e9.zip` | 153.798.041 | `d228baf1439b3672f84a9508f453808ff0e7e170993186223d51081816989337` |
+| `vieneu-v3-5f2a3e9-snapshot.zip` | 1.677.831.742 | `b2d4db77dcd94a3f050077475428d9b4e6fb3435c86640f8fd93c81464a6f7bc` |
+
+Gói đầu dành cho app: ONNX int8/tokenizer mới trong `model-v3-5f2a3e9/`, cùng codec MOSS
+đã có. Gói snapshot sao lưu **toàn bộ kho nguồn tại revision trên**, gồm cả safetensors,
+ONNX fp32/int8, encoder, denoiser và tài liệu, không sửa nội dung file gốc.
+Asset `vieneu-v3-5f2a3e9-nguon.json` chứa danh sách SHA256 từng file; mọi file đã đối chiếu
+với LFS SHA256 hoặc Git blob ID của Hugging Face trước khi đóng gói.
+
+Asset `vieneu-v3-5f2a3e9-voices.json` giữ nguyên 25 preset từ SDK
+`pnnbao97/VieNeu-TTS` revision `d350c63fceb0792d7b2db9a51d61cc040b1f8efa`.
+Speaker encoder trùng SHA256 với gói enroll cũ nên không cần tải lại bộ thêm giọng.
+
+Các gói cũ dưới đây vẫn giữ nguyên cho app đã phát hành:
+
 | Gói | Byte | SHA256 |
 |---|---|---|
 | `vieneu-v3.zip` | 152.508.042 | `19dbe3d0d4ab4f24a9d7709892d597a1fee37890b5d26807e2e9e461785a15ab` |
@@ -88,7 +108,9 @@ Các mô hình ở đây thuộc về tác giả gốc, không thuộc về dự
 phép nằm trong file [`LICENSE-neucodec`](LICENSE-neucodec).
 
 **VieNeu-TTS** — © pnnbao-ump, phát hành theo giấy phép **CC BY-NC 4.0**: phi thương mại
-và phải ghi công tác giả.
+và phải ghi công tác giả, đối với các bản sao lịch sử ở trên. Riêng v3 Turbo revision
+`5f2a3e93092efaba9153253ff5f2e6a8e810e4f2` công bố **Apache-2.0** trong model card được
+lưu nguyên vẹn trong snapshot. Không suy giấy phép của revision mới sang các bản cũ.
 
 **MOSS-Audio-Tokenizer** — © OpenMOSS Team, Apache-2.0.
 
